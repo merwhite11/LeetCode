@@ -7,7 +7,7 @@ no two chars can map to same chars, but char can map to itself
 
 //examples
 s = "egg" t = "add"
-output: true 
+output: true
 
 s = "foo" t = "bar"
 output: false
@@ -17,7 +17,7 @@ s = "paper" t = "title"
 //plan
 create storage
 create empty array
-loop thru s 
+loop thru s
     check if curr char is in storage
         if it is -> push val to array
     if not
@@ -25,7 +25,7 @@ loop thru s
         set curr char to t char of same index
         push to array
 
-join storage.values -> does it equal t? 
+join storage.values -> does it equal t?
 
 
 
@@ -34,7 +34,7 @@ join storage.values -> does it equal t?
 /*
 var getRandomLetter = function() {
 
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const randomLetter = alphabet[Math. floor(Math. random() * alphabet. length)]
     return randomLetter;
 }
@@ -61,6 +61,8 @@ var isIsomorphic = function(s, t) {
 
 var isIsomorphic = function(s, t) {
     for(let i = 0; i < s.length; i++) {
+        console.log('s', s[i])
+        console.log('t', t[i])
         if(s.indexOf(s[i], i + 1) !== t.indexOf(t[i], i + 1)) {
             return false;
         }
@@ -74,4 +76,4 @@ console.log(isIsomorphic(s, t))
 
 const str = "Brave new world";
 
-console.log(str.indexOf("w"), 9)
+console.log(str.indexOf("w", 9))
