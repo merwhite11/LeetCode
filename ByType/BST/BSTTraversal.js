@@ -2,12 +2,13 @@
 input: 3 functions take in a bst and an empty array
 traverse bst, add nodes to input array
 
-in order: left: child -> parent for each node until no parent
-          then right
+in order: LEFT: left leaves -> parent -> right leaves -> grandparent
+          RIGHT: left leaves -> parent -> right leaves -> grandparent
 
-pre order: root -> down left, down right
+pre order: root -> left parent -> left leaves -> right parent -> right leaves
 
-post order: left leaves, parent, right leaves, parent
+post order: LEFT: left leaves, right leaves, parent //
+            RIGHT: left leaves, right leaves, parent
 
           10
       5       15
@@ -86,5 +87,5 @@ const root = new BST(10);
 
   console.log(root)
  console.log(inOrderTraverse(root, []))
- console.log(preOrderTraverse(root, []))
- console.log(postOrderTraverse(root, []))
+//  console.log(preOrderTraverse(root, []))
+//  console.log(postOrderTraverse(root, []))
