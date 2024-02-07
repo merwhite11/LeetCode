@@ -44,13 +44,12 @@ if k === j -> break
 [0, 1, 2]
 //first pass --> move 2's to end
 [1, 2, 0, 0, 3, 2, 1, 0]
-  i                   j
-no swap
+fs                    t
+1 = second el -> move s up
 
-[1, 0, 0, 0, 3, 2, 1, 2]
-    i                 j
-move 2 to end of array
-j--
+[1, 2, 0, 0, 3, 2, 1, 0]
+f   s                 t
+1 = second el -> move s up
 
 [1, 0, 0, 0, 3, 2, 1, 2]
                 i   j
@@ -110,8 +109,15 @@ function swap(arr, idx1, idx2) {
 // }
 
 //ONE PASS SOLUTION
+/*
+//create vars to store positions
+first = 0
+second = 0
+third = array.length - 1
 
+check vals
 
+*/
 var arr = [9, 9, 9, 7, 9, 7, 9, 9, 7, 9]
 var order = [7, 11, 9]
 
