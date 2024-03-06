@@ -11,111 +11,57 @@ output: 3
 6 -> 6
 2 -> 2 or 21
 
-counter = 1
+make counter array s.length, filled with 0's
+[0, 0, 0, 0, 0]
+set counter[0] = 1
+loop i from 1 to end of storage arr
 
-for each position, find the possible nums they can be
-make an array of arrays
-[[1, 12], [2, 26], [6], [2, 21], [1, 4], [4]]
+if s[i] != 0
+  counter[i] += counter[i-1]
 
-make array with all 0 els -> [A, B, F, B]
+if s[i-1] == 1 ||
+s[i-1] == 2 && s[i] < 7
+  counter[i] += counter[i - 1] + counter[i-2]
 
-loop i thru arr
-  curr = arr[i]
-  loop j thru arr
-    if there's a 1 el at curr
-    add one to counter
-    skip next j++
-
-i = 0
-j = 0
-counter = 2
-
-i = 1
-j = 1
-counter = 3
-
-
-make array with all 1 els
-if there is a 1 el skip next el
-if no 1 el, use 0 el -> [L, F, B]
-
-
-one by one -> 1, 2, 6, 2 -> ABFB
-
-two by two -> 12, 6, 2 -> LFB
-              1, 26, 2 -> AZB
-
-
-loop thru once to get one by ones
-
-loop thru again to get two by twos
-  if there's a next
-    if el is 1
-      decode 'curr + next'
-      push to result
-      i ++
-    if el is 2 and next is < 7
-      decode 'curr + next'
-      push to result
-      i++
-  else push to result
-
-  walk-thru
-
-  counter
-
-  one by one loop
-  1 -> A -> res = [A]
-  2 -> B //res = [AB]
-  6 -> F //res = [A,B,F]
-  2 -> B // res = [A, B, F, B]
-
-loop thru array
-
-  i= 0
-  curr = 1
-  next = 2
-  cur = 12
-  res = [L]
-  i++
-
-  i = 2
-  curr = 6
-  res = [L, F]
-
-  i = 3
-  curr = 2
-  res = [L, F, B]
+return last el of counter
 
 
 
 */
 
 function decodeVariations(s) {
-  let count = 1;
-  possibles = []
-  for (let i = 0; i < s.length; i++) {
-    let curr = s[i]
-    if (
-      s[i + 1] &&
-      ((curr === '1') ||
-        (curr === '2' && s[i + 1] < 7))
-    ) {
-      function recursive()
+  const n = s.length
+  let counter = new Array(n).fill(0);
+  console.log(counter)
+  if(s[0] === '0') return 0;
+  counter[0] = 1;
+  for(let i = 1; i < n; i++) {
 
+    if(s[i] != '0') counter[i]++;
+
+    if(i > 0) {
+
+      if(s[i-1] == '1') counter[i] += counter[i-1];
+
+      if(
+        s[i-1] == '2' && s[i] < 7
+      ) counter[i] += counter[i-1];
     }
+
   }
-  console.log(count)
+  console.log('counter', counter)
+  return counter[n-2]
 }
 
-var s = '126214'
-decodeVariations(s)
+var s = '1262'
+console.log(decodeVariations(s))
 
 /*
-1, 2, 6, 2, 1, 4
-1, 26, 2, 1, 4
-1, 26, 21, 4
-1, 26, 2, 14
+i=0
+1 -> [1, 2, 0, 0, 0]
+
+i=1
+2 -> [1, 1, 1]
 
 12, 6, 2, 1, 4
 12, 6, 21, 4
@@ -189,7 +135,7 @@ iterate thru string starting at 1
   if cur char is not '0'
     update d[i] = d[i-1]
 
-  if prev char to see if forms valid 2 digit num with cur
+  if prev char forms valid 2 digit num with cur
     dp[i] = dp[i-2]
 
   return dp[n]
@@ -199,21 +145,19 @@ iterate thru string starting at 1
   dp = [1, 0, 0, 0, 0]
 
   i = 1
-  cur = 1
+  cur = 2
   d[i] += d[i-1]
   [1, 1, 0, 0, 0 ]
 
   i = 2
-  cur = 2
-  not 0 -> dp[2] += dp[1] -> [1, 1, 1, 0, 0]
-  12 is valid two digit dp[2] += dp[0]
-  [1, 1, 2, 0, 0]
+  cur = 6
+  not 0 -> dp[1] += dp[0] -> [1, 1, 1, 0, 0]
+  prev is 2 -> [1, 1, 3, 0, 0]
+  [1, 1, 3, 0, 0]
 
   i = 3
-  cur = 6
-  not 0 -> dp[3] += dp[2] -> [1, 1, 2, 2]
-  valid with prev -> dp[3] += dp[1]
-  [1, 1, 2, 3]
+  cur = 2
+  not 0 -> dp[3] += dp[2] -> [1, 1, 3, 3]
 
   i = 4
   cur = 2
