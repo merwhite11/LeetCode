@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Holy Grail</title>
+    <style>
+
+    body {
+      padding: 0;
+      margin: 0
+    }
+    * {
+      font-family: Helvetica;
+    }
+    .outer-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, footer {
+      font-size: 30px;
+      text-align: center;
+    }
+
+    section, header, footer {
+      border: 3px solid green;
+    }
+
+    .header-row, .footer-row {
+      height: 40px;
+    }
+
+    .main-row {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .left, .right {
+      width: 100px;
+    }
+    h4{
+      font-size: 25px;
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    .center {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 30px;
+    }
+
+   p{
+     padding: 20px;
+     overflow: scroll;
+   }
+   .right {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-between;
+   }
+   .right div {
+     height: 90px;
+     width: 90px;
+     background-color: blue;
+     margin: 10px;
+   }
+
+   @media only screen and (max-width: 550px) {
+     .main-row {
+       flex-direction: column;
+     }
+     .left {
+       width: 100%;
+     }
+     .right {
+       width: 100%;
+       flex-direction: row;
+     }
+     li {
+       display: inline-block;
+     }
+   }
+    </style>
+
+
+
+</head>
+<body>
+ <div class="outer-container">
+ <header class="header-row">HEADER</header>
+ <main class="main-row">
+   <section class="left">
+   <nav>
+   <h4>
+   MENU
+   </h4>
+   <ul>
+   <li>item 1</li>
+   <li>item 2</li>
+   <li>item 3</li>
+   <li>item 4</li>
+   <li>item 5</li>
+   </ul>
+   </nav>
+
+   </section>
+
+   <section class="center">
+   <h3>
+   CONTENT
+   </h3>
+   <p>
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+   </p>
+    </section>
+   <section class="right">
+     <div>
+       AD
+     </div>
+        <div>
+       AD
+     </div>
+        <div>
+       AD
+     </div>
+   </section>
+ </main>
+ <footer class="footer-row">FOOTER</footer>
+ </div>
+<script>
+    /* --------------------
+     Add your code here
+    --------------------- */
+</script>
+</body>
+</html>

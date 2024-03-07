@@ -34,85 +34,40 @@
 
 <body>
   <div class="calculator">
-    <div class="display">display</div>
-    <table class="buttons">
-      <tr>
-        <td>0</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>9</td>
-        <td>=</td>
-        <td>C</td>
-      </tr>
-      <tr>
-        <td>+</td>
-        <td>-</td>
-        <td>x</td>
-        <td>/</td>
-      </tr>
-    </table>
-
+    <div class="input" id="input"></div>
+    <div class="buttons">
+      <div class="operators">
+        <div>+</div>
+        <div>-</div>
+        <div>&times;</div>
+        <div>&divide;</div>
+      </div>
+      <div class="leftPanel">
+        <div class="numbers">
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+        </div>
+        <div class="numbers">
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+        </div>
+        <div class="numbers">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </div>
+        <div class="numbers">
+          <div>0</div>
+          <div>.</div>
+          <div id="clear">C</div>
+        </div>
+      </div>
+      <div class="equal" id="result">=</div>
+    </div>
   </div>
-  <script>
-    const tds = document.querySelectorAll('.buttons td')
-    const display = document.querySelector('.display')
-    let buttonsPressed = [];
-    let sum = 0;
-
-
-    const calculate = (operator) => {
-      console.log('op', operator)
-      switch(operator) {
-        case '+':
-          sum += Number(buttonsPressed.join(''))
-          break;
-        // case '-':
-        //   sum -= Number(buttonsPressed.join(''))
-        //   break;
-        // case '*':
-        //   sum *= Number(buttonsPressed.join(''))
-        //   break;
-        // case '*':
-        //   sum /= Number(buttonsPressed.join(''))
-        //   break;
-        default:
-          console.log('error')
-      }
-      console.log('sum', sum)
-      buttonsPressed = []
-    }
-
-    const total = () => {
-      sum += Number(buttonsPressed.join(''))
-      console.log('total', sum)
-      display.innerHTML = sum
-    }
-
-    const clickHandler = (string) => {
-      if(string === '=') total();
-      let numString = Number(string)
-      if (typeof numString !== 'number') calculate(string);
-      display.innerHTML = string;
-      buttonsPressed.push(string)
-    }
-    //check if input is an operator -> if so convert to operator
-    //concat display string
-
-    tds.forEach(td => td.addEventListener('click', () => {
-      console.log('buttonvalue', td.innerHTML)
-      clickHandler(td.innerHTML)
-    }))
-  </script>
+  <script src="./calculator.js"></script>
 </body>
 
 </html>
