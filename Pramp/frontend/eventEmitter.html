@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Emitter</title>
+</head>
+<body>
+<script>
+
+class EventEmitter {
+  constructor() {
+    this.events = {}
+  }
+  on(event, listener) {
+    if(!this.events[event]) {
+      this.events[event] = [];
+    }
+    this.events[event].push(listener)
+  };
+  off(event, listener) {
+    if(!this.events[event]) {
+      throw new Error (event + ' listener does not exist')
+    }
+    //get the index from array, splice it out
+    var listenerIdx = this.events[event].indexOf(listener);
+    this.events[event].splice(listenerIdx, 1)
+    console.log(this.events)
+  };
+  once(event, listener) {
+    //put it in a wrapper with off call, call this.on with wrapper
+    const onceWrapper = (...args) => {
+      listener.apply(this, args);
+      this.off(event, onceWrapper)
+    }
+    this.on(event, onceWrapper)
+  };
+  emit(event, data) {
+    //loop thru events call listener with data
+    if(!this.events[event]) {
+      throw new Error(event + ' listener does not exist')
+    }
+    this.events[event].forEach(listener => {
+      if(typeof listener !== 'function') {
+        throw new Error (listener + ' is not a function');
+      }
+      listener(data)
+    })
+  }
+}
+
+function responseToEvent(msg) {
+    console.log(msg);
+}
+
+eventEmitter = new EventEmitter;
+eventEmitter.on('pramp', responseToEvent);
+eventEmitter.once('pramp', function(msg) { console.log(msg + ' just once!'); });
+eventEmitter.emit('pramp', '1st');
+eventEmitter.emit('pramp', '2nd');
+eventEmitter.off('pramp', responseToEvent);
+eventEmitter.on('pramp', responseToEvent);
+eventEmitter.emit('pramp', '3rd');
+eventEmitter.emit('pramp', '1st');
+</script>
+</body>
+</html>
+

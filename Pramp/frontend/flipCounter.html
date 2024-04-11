@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      .container {
+        height: 40%;
+        display: flex;
+        flex-direction: row;
+        /* border: solid black 3px; */
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+      }
+      .flip {
+        width: 200px;
+        height: 80%;
+        border: solid black 3px;
+        border-radius: 5px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+      }
+      #right, #left {
+        font-size: 150px;
+        font-family: 'Courier New', Courier, monospace;
+        color: white;
+      }
+    </style>
+</head>
+<body>
+<div class ="container">
+  <div class="flip">
+    <div id="left">0</div>
+  </div>
+  <div class="flip">
+    <div id="right">0</div>
+  </div>
+</div>
+
+</div>
+<script src="flipCounter.js">
+</script>
+
+
+</body>
+</html>

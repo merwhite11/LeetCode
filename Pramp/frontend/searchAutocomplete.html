@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Autocomplete</title>
+
+    <!-- Included some basic styling, change at will -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/prampcontent/3ea04cbd0f61a798e96afbe5d31ec2f9/raw/e879e32222b543b29a168daa089e2f9f28cf9eb2/autocomplete.css"> -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(
+        135deg, #ACE1AF, #008B8B)
+    }
+
+    form {
+      width: 75vmin;
+      height: 100%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      padding: 40px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 15px 10px;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #645979;
+      border-radius: 10px 10px 0 0;
+      background-color: aliceblue;
+      font-size: 16px;
+    }
+  </style>
+  </head>
+<body>
+<form autocomplete="off">
+  <div>
+    <input type="text" id="input" placeholder="Type a movie title here..." oninput="handleInputChange(this.value)"/>
+    <ul class="list">
+
+    </ul>
+  </div>
+</form>
+<!-- Helper code to provide a search API for mock data -->
+<script src="https://cdn.rawgit.com/prampcontent/180077452f9279073cab1035f60d30cf/raw/9cbf891a80bad9ad09c6261ef9578a65502922cc/search_helper.js"></script>
+<script src="searchAutocomplete.js">
+
+</script>
+</body>
+</html>
