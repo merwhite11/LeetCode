@@ -31,24 +31,22 @@ swap with smallest so far
 
 */
 function swap(arr, idx1, idx2) {
-  let temp = arr[idx1];
-  arr[idx1] = arr[idx2];
+  var temp = arr[idx1]
+  arr[idx1] = arr[idx2]
   arr[idx2] = temp;
-  console.log('swapped', arr)
 }
+
 function sortKMessedArray(arr, k) {
   for(let i = 0; i < arr.length; i++) {
-    let currVal = arr[i];
+    var curr = arr[i]
     for(let j = i - 1; j >= i - k; j--) {
-      if(arr[j] > currVal) {
-        swap(arr, arr.indexOf(currVal), j)
-      }
+      if(arr[j] > curr) swap(arr, arr.indexOf(curr), j)
     }
   }
-return arr
+  return arr;
 }
 
 
 var arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
 var k = 2
-sortKMessedArray(arr, k)
+console.log(sortKMessedArray(arr, k))

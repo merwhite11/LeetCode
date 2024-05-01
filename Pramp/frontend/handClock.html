@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hand Clock</title>
+    <style>
+        .clock-container {
+        height: 100vh;
+        background: radial-gradient(
+        circle, #B2FFFF, #6F00FF);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .clock-face {
+          width: 500px;
+          height: 500px;
+          border-radius: 50%;
+          border: 3px #002fa7 solid;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          position: relative;
+        }
+
+        .hand {
+          transform-origin: center bottom;
+          transform: rotate(0deg);
+          position: absolute;
+          left: 50%;
+          bottom: 50%;
+        }
+        .hour-hand {
+          height: 180px;
+          width: 6px;
+          background-color: #002fa7;
+          transform: rotate(0deg);
+        }
+        .minute-hand {
+          height: 210px;
+          width: 4px;
+          background-color: #002fa7;
+          transform: rotate(10deg);
+        }
+        .second-hand {
+          height: 240px;
+          width: 2px;
+          background-color: #DA70D6;
+          transform: rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+<div class="clock-container">
+  <div class="clock-face">
+    <div class="hand hour-hand"></div>
+    <div class="hand minute-hand"></div>
+    <div class="hand second-hand"></div>
+
+  </div>
+
+</div>
+<script>
+  const secondHand = document.querySelector('.second-hand');
+  const minuteHand = document.querySelector('.minute-hand');
+  const hourHand = document.querySelector('.hour-hand');
+
+  setInterval(() => {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    secondHand.style.transform = `rotate(${6 * seconds}deg)`;
+    minuteHand.style.transform = `rotate(${6 * minutes}deg)`;
+    hourHand.style.transform = `rotate(${30 * hours}deg)`;
+
+  }, 1000)
+</script>
+</body>
+</html>
