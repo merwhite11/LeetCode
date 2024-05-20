@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Emitter</title>
+  </head>
+  <body>
+    <script>
+      // create a class , with events obj in constructor
+      class EventEmitter {
+        constructor() {
+          this.events = {};
+        }
+        //on
+        //take is an event and callback,
+        //if event is not in this.events -> adds to obj with val set to array with callback pushed in
+        on(event, callback) {
+          if (this.events[event]) this.events[event].push(callback);
+          else this.events[event] = [callback];
+          console.log('events added', this.events)
+        }
+
+        //once //takes in event and callback
+        //creates a wrapper around the callback that takes in spread args
+        //calls callback by applying args to this
+        //calls off to remove wrapper from this.events
+        //calls on to add wrapper to this.events
+        once(event, callback) {
+          var wrapper = (...args) => {
+            callback.apply(this, args);
+            this.off(event, wrapper);
+          };
+          this.on(event, wrapper);
+        }
+
+        //emit
+        //takes in event and param to pass to events
+        //loop thru all vals at events[event] and call with param
+        emit(event, param) {
+          this.events[event].forEach((el) => el(param));
+        }
+        //off
+        //delete event from this.events
+        off(event, callback) {
+          var idx = this.events[event].indexOf(callback);
+          this.events[event].splice(idx, 1);
+        }
+      }
+
+      function responseToEvent(msg) {
+        console.log(msg);
+      }
+      var eventEmitter = new EventEmitter();
+      eventEmitter.on("pramp", responseToEvent);
+      eventEmitter.once("pramp", function (msg) {
+        console.log(msg + " just once!");
+      });
+      eventEmitter.emit("pramp", "1st");
+      eventEmitter.emit('pramp', '2nd');
+      eventEmitter.off('pramp', responseToEvent);
+      eventEmitter.emit('pramp', '3rd');
+      eventEmitter.emit('pramp', '1st');
+    </script>
+  </body>
+</html>
