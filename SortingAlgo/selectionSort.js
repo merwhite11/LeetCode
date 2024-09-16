@@ -4,7 +4,7 @@ places small values into sorted position
 output: sorted array
 input: array
 
-loop i through array 
+loop i through array
 set min var to arr[i]
 set min idx to 0
     loop j through array starting at i + 1

@@ -4,7 +4,7 @@ loop thru array starting at end
 store current val as var
     if curr < prev
         swap
-        current 
+        current
     else keep looping down array
 
 i = 5
@@ -65,11 +65,11 @@ i = 3
 
 pseudocode
 
-loop i starting at index 1
+loop i starting at index 1 , going forwards
     loop j starting at i - 1 , going backwards
-        compare current j to current i --> if greater, swap 
-    
-*/ 
+        compare current j to current i --> if greater, swap
+
+*/
 
 function swap(arr, idx1, idx2) {
     var temp = arr[idx1]
@@ -80,7 +80,7 @@ function swap(arr, idx1, idx2) {
 function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         var currVal = arr[i]
-        for (let j = i -1; j >= 0; j--) {    
+        for (let j = i -1; j >= 0; j--) {
             if(arr[j] > currVal) {
                 swap(arr, arr.indexOf(currVal), j)
             }
